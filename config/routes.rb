@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'homes/:id' => 'homes#show'
   get 'home/index'
+  root 'home#index'
 
 
 

@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Readers Directory</h1>
+<button type="button" class="btn btn-primary btn-lg pull-left"><%= link_to 'New Reader', new_reader_path %></button><br>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -20,15 +21,12 @@
         <td><%= reader.last_name %></td>
         <td><%= reader.email %></td>
 
-        <td><%= link_to 'Show', reader %></td>
-        <td><%= link_to 'Edit', edit_reader_path(reader) %></td>
-        <td><%= link_to 'Delete', reader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button type="button" class="btn btn-info"><%= link_to 'Show', reader %></button></td>
+        <td><button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_reader_path(reader) %></button></td>
+        <td><button type="button" class="btn btn-danger"><%= link_to 'Delete', reader, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Reader', new_reader_path %><br>
-<h5><%= link_to 'List of Books', reader_books_path(:reader_id) %></h5>

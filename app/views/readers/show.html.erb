@@ -17,18 +17,17 @@
   <%= @reader.email %>
 </p>
 
-<%= link_to 'Edit', edit_reader_path(@reader) %>
-<%= link_to 'Delete', @reader, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', readers_path %>
+<button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_reader_path(@reader) %></button>
+<button type="button" class="btn btn-danger"><%= link_to 'Delete', @reader, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<button type="button" class="btn btn-secondary"><%= link_to 'Back', readers_path %></button>
 
 <h2> Books for <%= @reader.first_name %></h2>
-
-
 <% if @reader.tracks.present? %>
 
- <table>
-  <thead>
+ <table class="table">
+  <thead class="thead-dark">
     <tr>
+      <th>ID</th>
       <th>Title</th>
       <th>Author</th>
       <th>Shelf</th>
@@ -45,8 +44,8 @@
         <td><%= t.shelf %></td>
         <td><%= t.review %></td>
 
-        <td><%= link_to 'Edit', edit_reader_book_path(reader_id: @reader.id, id: t.book.id) %></td>
-        <td><%= link_to 'Delete', [@reader, t.book], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_reader_book_path(reader_id: @reader.id, id: t.book.id) %></button></td>
+        <td><button type="button" class="btn btn-danger"><%= link_to 'Delete', [@reader, t.book], method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
 
 
         </tr>
@@ -56,5 +55,6 @@
 <% end %>
 
 
-<%= link_to 'Add a New Book', new_reader_book_path(@reader), class: "pull-right" %>
+<button type="button" class="btn btn-primary btn-lg"><%= link_to 'Add a New Book', new_reader_book_path(@reader), class: "pull-left" %></button>
+
 <%# <%= render 'tracks/form' %>

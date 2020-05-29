@@ -1,29 +1,33 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="jumbotron">
+  <div class="container">
+    <h1>BookBean</h1>
+    <p>BookBean is an app to track your books!</p>
+    <%= image_tag ("/assets/boy.jpg"), class: "img-responsive w-100"%>
 
-<p id="notice"><%= notice %></p>
+    <br>
 
-<h1>List of Books</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h3>BookBean helps you track all the books you are reading.</h3>
+      <p>Just add a new book, enter your shelf as "Read", "Currently Reading", or "Want to Read". The app will save your progress. And once you are done reading the book, feel free to leave an awesome review.
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <h3>Create an account</h3>
+      <p>Just use your First name, Last name and your email to create an account to start tracking. Then click on "Add a New Book" button to add your first book!
+      </p>
+      <button type="button" class="btn btn-primary btn-sm"><%= link_to 'New Reader', new_reader_path %></button><br>
+     </div>
+     <div class="col-lg-4">
+       <h3>Go make friends!</h3>
+       <p>See the list of our readers and find out what they are reading. </p>
+         <%= button_to 'Readers Directory', readers_path, :method => :get,  :class => "btn btn-primary btn-sm"%>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+      </div>
+  </div>
+</div>
