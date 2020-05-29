@@ -1,0 +1,37 @@
+<h1>Home#show</h1>
+<p>Find me in app/views/home/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Book Details</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %>
+<%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', books_path %>
+
+<h2> Readers for <i><%= @book.title %></i></h2>
+
+
+<div id="readers">
+  <% if @book.readers.present? %>
+    <p>
+      <% @book.readers.joins(:books_readers).each do |reader| %>
+        <strong><%= reader.first_name %></strong>
+        <!-- <strong><%= reader.last_name  %></strong> -->
+        <%= reader.books_readers.first.review  %><br>
+
+      <% end %>
+      <% end %>
+    </p>
+
+</div>

@@ -1,0 +1,44 @@
+<!-- Show Book Details and Reviews by Readers -->
+
+<p id="notice"><%= notice %></p>
+
+<h1>Book Details</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @book.author %>
+</p>
+
+
+<%= link_to 'Back', reader_books_path %>
+
+<h2> Readers for <i><%= @book.title %></i></h2>
+
+<% if @book.tracks.present? %>
+
+ <table>
+  <thead>
+    <tr>
+      <th>Reader</th>
+      <th>Review</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <% @book.tracks.joins(:reader).each do |t| %>
+        <tr>
+        <td><i><%= t.reader.first_name %></i></td>
+        <td><%= t.review %></td>
+
+
+      </tr>
+      <% end %>
+      </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,31 @@
+<%# This is a 'new' form to add new books to the reader %>
+
+<%= form_tag(model: [@reader, @book], local: true) do |form| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :shelf %>
+    <%= form.text_area :review %>
+  </div>
+
+  <%= fields_for(@reader, @reader.books.build) do |u| %>
+  <div class="field">
+    <%= u.label :title %><br />
+    <%= u.text_field :author %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

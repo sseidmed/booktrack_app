@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Readers Directory</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @readers.each do |reader| %>
+      <tr>
+        <td><%= reader.first_name %></td>
+        <td><%= reader.last_name %></td>
+        <td><%= reader.email %></td>
+
+        <td><%= link_to 'Show', reader %></td>
+        <td><%= link_to 'Edit', edit_reader_path(reader) %></td>
+        <td><%= link_to 'Delete', reader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reader', new_reader_path %><br>
+<h5><%= link_to 'List of Books', reader_books_path(:reader_id) %></h5>
