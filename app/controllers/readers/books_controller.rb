@@ -19,7 +19,7 @@ class Readers::BooksController < ApplicationController
   end
 
   def create
-    byebug
+
     # @reader = Reader.find(params[:reader_id])
     # @book = @reader.books.new
     @book = Book.new(book_params)
@@ -53,7 +53,8 @@ class Readers::BooksController < ApplicationController
   def update
     byebug
     respond_to do |format|
-      if @book.update(book_params)
+
+      if @book.update!(book_params)
         format.html { redirect_to @reader, notice: 'Book was successfully updated.' }
         format.json { head :no_content }
       else
@@ -67,7 +68,7 @@ class Readers::BooksController < ApplicationController
     title = @book.title
 
     if @book.destroy
-      flash[:notice] = '#{title} was deleted successfully.'
+      flash[:notice] = "#{title} was deleted successfully."
       redirect_to @reader
     else
       flash[:error] = 'There was an error deleting the book.'
@@ -78,11 +79,19 @@ class Readers::BooksController < ApplicationController
   private
 
   def book_params
+
     params.require(:book).permit(:id, :title, :author)
   end
 
+
   def track_params
-    params.require(:track).permit(:reader_id, :book_id, :shelf, :review)
+    params.require(:track).permit(:id, :reader_id, :book_id, :shelf, :review)
+  end
+
+  def book_and_track_params
+    book_params
+    track_params
+
   end
 
   def set_book

@@ -60,7 +60,7 @@ class ReadersController < ApplicationController
     end
 
     def reader_params
-      params.require(:reader).permit(:first_name, :last_name, :email)
+      params.require(:reader).permit(:first_name, :last_name, :email, tracks_attributes: [ :id, :shelf, :review ])
     end
 
     def catch_not_found(e)

@@ -5,16 +5,16 @@ class Book < ApplicationRecord
   accepts_nested_attributes_for :tracks
 
   #validates :title, presence: true
-  #validates_uniqueness_of :id, scope: :reader_id, allow_blank: false
-  #validates :title, uniqueness: { scope: :reader_id }
+  #validates_uniqueness_of :title, scope: :reader
+  # validates :title, uniqueness: { scope: :reader_id }
 
   #validates :author, presence: true
 
-  TITLES = []
+  TITLES = ["Becoming", "Dare to Lead"]
 
-  def self.titles
+  def self.title
   two_d = []
-  TITLE.each do |f|
+  TITLES.each do |f|
     two_d << [f,f]
   end
   return two_d
