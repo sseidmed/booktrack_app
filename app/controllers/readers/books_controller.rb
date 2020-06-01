@@ -19,20 +19,15 @@ class Readers::BooksController < ApplicationController
   end
 
   def create
-
-    # @reader = Reader.find(params[:reader_id])
-    # @book = @reader.books.new
     @book = Book.new(book_params)
     @track = Track.new(track_params)
     book_saved = @book.save
     track_saved = false
-
     if book_saved
       @track.book_id = @book.id
       @track.reader_id = @reader.id
       track_saved = @track.save
     end
-
     respond_to do |format|
      if book_saved && track_saved
         format.html { redirect_to @reader, notice: 'Book was successfully created and added.' }
@@ -46,6 +41,9 @@ class Readers::BooksController < ApplicationController
      end
     end
   end
+
+
+
 
   def edit
   end
@@ -79,7 +77,6 @@ class Readers::BooksController < ApplicationController
   private
 
   def book_params
-
     params.require(:book).permit(:id, :title, :author)
   end
 
@@ -88,11 +85,7 @@ class Readers::BooksController < ApplicationController
     params.require(:track).permit(:id, :reader_id, :book_id, :shelf, :review)
   end
 
-  def book_and_track_params
-    book_params
-    track_params
 
-  end
 
   def set_book
     @book = Book.find(params[:id])

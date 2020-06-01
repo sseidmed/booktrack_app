@@ -8,7 +8,6 @@ class ReadersController < ApplicationController
     @books = Book.all
   end
 
-
   def new
     @reader = Reader.new
   end
@@ -21,7 +20,7 @@ class ReadersController < ApplicationController
   def create
       @reader = Reader.new(reader_params)
       if @reader.save
-        # flash.notice = "The order record was created successfully."
+
         redirect_to @reader
       else
         flash.now.alert = @reader.errors.full_messages.to_sentence
@@ -60,7 +59,7 @@ class ReadersController < ApplicationController
     end
 
     def reader_params
-      params.require(:reader).permit(:first_name, :last_name, :email, tracks_attributes: [ :id, :shelf, :review ])
+      params.require(:reader).permit(:id, :first_name, :last_name, :email)
     end
 
     def catch_not_found(e)

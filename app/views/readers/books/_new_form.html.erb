@@ -26,13 +26,12 @@
 
 
 
- <%= fields_for(@reader.tracks.build) do |u| %>
+ <%= fields_for(@book.tracks.build) do |u| %>
 
  <div class="field">
-  <%= u.label :shelf %><br>
-  <%= u.text_field :shelf %>
+
   <%# <%= u.select :track_id, options_from_collection_for_select(Track.all, 'id', 'shelf') %>
-  <%# <%= u.collection_select :tracks, Track.all, :id, :shelf, include_blank: true %>
+  <%= u.collection_select :id, Track.all, :id, :shelf, include_blank: true %>
 </div>
 
 <div class="field">

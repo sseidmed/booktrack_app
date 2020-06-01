@@ -2,6 +2,7 @@ class Book < ApplicationRecord
   has_many :tracks
   has_many :readers, through: :tracks
 
+  # validates_presence_of :tracks
   accepts_nested_attributes_for :tracks
 
   #validates :title, presence: true
