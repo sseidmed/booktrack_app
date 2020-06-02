@@ -1,7 +1,10 @@
 class Track < ApplicationRecord
   belongs_to :reader
   belongs_to :book
+
+  validates_presence_of :shelf
   
+
 
   SHELVES = ["Read", "Currently Reading", "Want to Read"]
 

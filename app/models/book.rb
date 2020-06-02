@@ -4,6 +4,8 @@ class Book < ApplicationRecord
 
   # validates_presence_of :tracks
   accepts_nested_attributes_for :tracks
+  validates_presence_of :title
+  validates_presence_of :author
 
   #validates :title, presence: true
   #validates_uniqueness_of :title, scope: :reader
